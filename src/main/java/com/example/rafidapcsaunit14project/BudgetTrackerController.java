@@ -19,6 +19,9 @@ public class BudgetTrackerController {
     private Label loginError;
 
 
+    /*Extracts user input, creates a new BudgetTrackerApplication object to switch scenes using
+    changeScene(String fxml) if the info entered is correct, and creates a new
+    BudgetTrackerCalculator object to check the user input’s accuracy. */
     @FXML
     protected void onUserLoginClick() throws IOException {
         BudgetTrackerApplication BTA = new BudgetTrackerApplication();

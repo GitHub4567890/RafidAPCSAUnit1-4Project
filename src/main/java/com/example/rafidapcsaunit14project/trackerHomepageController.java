@@ -57,11 +57,12 @@ public class trackerHomepageController {
     private Label monthlySubErrorLabel;
     @FXML
     private Label daysErrorLabel;
-
-
     private int initialTotal;
     private int currentTotal;
 
+    /* Creates a new BudgetTrackerApplication object to check if the user entered an integer in
+    the initialValueTextField using checkStartValue().If accepted, it sets the initial value to that, otherwise,
+    it tells the user to round the value through the Label valueStartError. */
     @FXML
     protected void onUserStartClick() {
         BudgetTrackerCalculator valueCheck = new BudgetTrackerCalculator(initialValueTextField, valueStartError);
@@ -77,6 +78,8 @@ public class trackerHomepageController {
         }
     }
 
+    /* Creates a new BudgetTrackerCalculator object to add the user-entered income/expense using calculateTotalAfterExpense().
+    If there is an error it reports to the user through the Label errorAdd. */
     @FXML
     protected void onUserAddClick() {
         BudgetTrackerCalculator calculate = new BudgetTrackerCalculator(itemValue.getText(), currentTotal);
@@ -92,12 +95,16 @@ public class trackerHomepageController {
 
     }
 
+    /* Hides the error for adding a value ok button. */
     @FXML
     protected void onUserAddErrorOkClick() {
         addExpErrorOkButton.setVisible(false);
         errorAdd.setText("");
     }
 
+    /* Extracts value from TextFields and uses a new BudgetTrackerCalculator object
+    calculateValueAfterDays(monthlySubscription, monthlyIncome, numberOfDays) method to
+    calculate the monthly values using the number of days the user entered using a while loop. */
     @FXML
     protected void onViewClick() {
         int monthlySubscription;
@@ -134,24 +141,29 @@ public class trackerHomepageController {
 
     }
 
+    /* Hides the error for adding a monthly subscription ok button. */
     @FXML
     protected void onUserMonthlySubOkClick() {
         monthlySubErrorOk.setVisible(false);
         monthlySubErrorLabel.setText("");
     }
 
+    /* Hides the error for adding a monthly income ok button. */
     @FXML
     protected void onUserMonthlyIncOkClick() {
         monthlyIncomeErrorOk.setVisible(false);
         monthlyIncomeErrorLabel.setText("");
     }
 
+    /* Hides the error for setting the number of days passed ok button. */
     @FXML
     protected void onUserDaysOkClick() {
         daysErrorOk.setVisible(false);
         daysErrorLabel.setText("");
     }
 
+    /* Creates a new BudgetTrackerApplication object to log the user out and
+    switch back to the login scene using changeScene("hello-view.fxml"). */
     @FXML
     protected void onUserLogOutClick2() throws IOException {
         BudgetTrackerApplication BTA2 = new BudgetTrackerApplication();
@@ -159,6 +171,8 @@ public class trackerHomepageController {
         System.out.println("User logged out.");
     }
 
+    /* Creates a new BudgetTrackerCalculator object to calculate the number
+    of times it would to make equal payments over equal days. */
     @FXML
     protected void onUserSeeValueSplittingClick() {
         int splittingPaymentValue;
@@ -177,6 +191,7 @@ public class trackerHomepageController {
         }
     }
 
+    /* Hides the error for splitting a payment ok button. */
     @FXML
     protected void onUserSplittingPaymentErrorButtonOkClick() {
         splittingPaymentErrorButton.setVisible(false);

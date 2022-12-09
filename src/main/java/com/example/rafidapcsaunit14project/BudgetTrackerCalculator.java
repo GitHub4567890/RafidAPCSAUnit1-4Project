@@ -9,6 +9,7 @@ public class BudgetTrackerCalculator {
     private int userCurrentValue;
     private String userExpense;
 
+    /* Constructors all set the parameter values to a variable in the class. */
     public BudgetTrackerCalculator() {
     }
 
@@ -26,6 +27,9 @@ public class BudgetTrackerCalculator {
         userCurrentValue = currentVal;
     }
 
+    /* Checks the startValue TextField from the constructor and returns a
+    string with the number if it is an int and is positive,
+    otherwise, it returns “error” and advises the user to round the value up or down. */
     public String checkStartValue() {
         int userTotalStartValue;
         double userTotalStartValueError;
@@ -58,7 +62,8 @@ public class BudgetTrackerCalculator {
         }
     }
 
-
+    /* Matches the username entered and password entered with ABC123
+    (not case-sensitive using toLowerCase()) and 123ABC (case sensitive). */
     public boolean checkLogin(String username, String password) {
         if (username.toLowerCase().equals("abc123") && password.equals("123ABC")) {
             return true;
@@ -73,6 +78,8 @@ public class BudgetTrackerCalculator {
         }
     }
 
+    /* Uses substring to check the + or - symbol entered
+    and adds the entered value from the constructor. */
     public String calculateTotalAfterExpense() {
         try {
             int expenseVal = (int) Math.round(Double.parseDouble(userExpense.substring(1)));
@@ -90,10 +97,14 @@ public class BudgetTrackerCalculator {
         }
     }
 
+    /* Uses Math.sqrt() to calculate the number of times to be
+    the same as the number of payments for splittingValue. */
     public int splitValueIntoEqualPayments(int splittingValue) {
         return (int) Math.round(Math.sqrt(splittingValue));
     }
 
+    /* Subtracts the monthly subscriptions and adds the monthly incomes using
+    a while loop and % 30 to until the user entered days passed value is met. */
     public int calculateValueAfterDays(int monthlySub, int monthlyInc, int daysPassed) {
         int userCurrentValueTemp = userCurrentValue;
         int i = 1;
@@ -108,6 +119,7 @@ public class BudgetTrackerCalculator {
         return userCurrentValueTemp;
     }
 
+    /* Formats the return of the class if called. */
     public String toString() {
         return "userCurrentValue = " + userCurrentValue;
     }
